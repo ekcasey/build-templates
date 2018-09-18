@@ -19,8 +19,11 @@ spec:
 
   steps:
   - name: prepare
-    image: packs/base
+    image: packs/base:dev
     command: ["/lifecycle/knative-helper"]
+    volumeMounts:
+    - name: "${CACHE}"
+      mountPath: /cache
     imagePullPolicy: Always
   - name: detect
     image: packs/samples
